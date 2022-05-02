@@ -1,10 +1,10 @@
 import sys
 import os
 import pytest
-from booker_app.booker_app import app as bookerApp
-from user_account_app.user_account_app import app as userAccApp
-from pass_app.pass_app import app as passApp
-from tracing_app.tracing_app import app as tracingApp
+from booker_app import app as bookerApp
+from user_account_app import app as userAccApp
+from pass_app import app as passApp
+from tracing_app import app as tracingApp
 from tracing_app.models import CovidTest, Vaccine
 import pymongo
 import time
