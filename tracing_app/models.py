@@ -1,4 +1,5 @@
 import pymongo
+import os
 
 
 class User:
@@ -14,8 +15,7 @@ class User:
         self.birthdate = birthdate
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["users"]
         mycol = mydb["users"]
         x = mycol.find_one({"crownpassid": int(crownpassid)})
@@ -46,16 +46,14 @@ class Trace:
         self.check = check
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["tracing"]
         mycol = mydb["tracing"]
         x = mycol.find({"crownpassid": int(crownpassid)})
         return x
 
     def wipeTracing(crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["tracing"]
         mycol = mydb["tracing"]
         query = mycol.find({"crownpassid": int(crownpassid)})
@@ -71,8 +69,7 @@ class CovidTest:
         self.result = result
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["tests"]
         mycol = mydb["tests"]
         x = mycol.find({"user": int(crownpassid)})
@@ -84,8 +81,7 @@ class CovidTest:
         return arrayTests
 
     def setColor(colour, crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         filter = {'user': crownpassid}
         filter2 = {'crownpassid': crownpassid}
         if colour == "red":
@@ -113,8 +109,7 @@ class Vaccine:
         self.vacType = vacType
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["vaccination"]
         mycol = mydb["vaccination"]
         x = mycol.find({"user": int(crownpassid)})

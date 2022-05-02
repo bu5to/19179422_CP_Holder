@@ -15,8 +15,7 @@ class User:
         self.birthdate = birthdate
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["users"]
         mycol = mydb["users"]
         x = mycol.find_one({"crownpassid": int(crownpassid)})

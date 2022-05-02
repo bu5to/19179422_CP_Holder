@@ -128,7 +128,7 @@ def test_privacy(clientPass, clientUser):
     response = clientPass.get("/crownpass/1")
     print(response)
     assert (response.status_code == 500)
-    #An error is thrown if a user tries to check a pass without having logged in or if the pass does not belong to him.
+    # An error is thrown if a user tries to check a pass without having logged in or if the pass does not belong to him.
 
 
 def raisingError(response):

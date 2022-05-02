@@ -1,5 +1,5 @@
 import pymongo
-
+import os
 
 class User:
     def __init__(self, crownpassid, photo, qr, phone, email, home, name, gender, birthdate):
@@ -15,7 +15,7 @@ class User:
 
     def get_by_id(crownpassid):
         myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+            os.environ.get('MONGO_CLIENT'))
         mydb = myclient["users"]
         mycol = mydb["users"]
         x = mycol.find_one({"crownpassid": int(crownpassid)})
@@ -46,8 +46,7 @@ class Trace:
         self.check = check
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["tracing"]
         mycol = mydb["tracing"]
         x = mycol.find({"crownpassid": int(crownpassid)})
@@ -55,7 +54,7 @@ class Trace:
 
     def wipeTracing(crownpassid):
         myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+            os.environ.get('MONGO_CLIENT'))
         mydb = myclient["tracing"]
         mycol = mydb["tracing"]
         query = {"crownpassid": int(crownpassid)}
@@ -70,7 +69,7 @@ class Crownpass:
 
     def get_by_id(crownpassid):
         myclient = pymongo.MongoClient(
-            "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+            os.environ.get('MONGO_CLIENT'))
         mydb = myclient["crownpass"]
         mycol = mydb["crownpass"]
         x = mycol.find_one({"crownpassid": int(crownpassid)})
