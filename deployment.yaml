@@ -28,22 +28,22 @@ spec:
     spec:
       containers:
       - name: user-account-app
-        image: gcr.io/soft7011-jorge/user_account_app:version1.0
+        image: gcr.io/soft7011-jorge/user_account_app:version1.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
       - name: tracing-app
-        image: gcr.io/soft7011-jorge/tracing_app:version1.0
+        image: gcr.io/soft7011-jorge/tracing_app:version1.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5001
       - name: pass-app
-        image: gcr.io/soft7011-jorge/pass_app:version1.0
+        image: gcr.io/soft7011-jorge/pass_app:version1.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5002
       - name: booker-app
-        image: gcr.io/soft7011-jorge/booker_app:version1.0
+        image: gcr.io/soft7011-jorge/booker_app:version1.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5003
