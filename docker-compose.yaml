@@ -1,0 +1,66 @@
+version: "3.9"
+
+networks:
+    holderapp:
+        external: true
+
+services:
+
+    booker_app:
+        build:
+            context: .
+            dockerfile: booker_app/Dockerfile
+        environment:
+            MONGO_CLIENT: "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+            SECRET_KEY: "thisisasecretkey"
+        image: booker_app
+        networks:
+            - holderapp
+        ports:
+            - 5003:5003
+
+    pass_app:
+        build:
+            context: .
+            dockerfile: pass_app/Dockerfile
+        environment:
+            MONGO_CLIENT: "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+            SECRET_KEY: "thisisasecretkey"
+          #  PATH_WKHTMLTOPDF: "C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+        image: pass_app
+        networks:
+            - holderapp
+        ports:
+            - 5002:5002
+
+    tracing_app:
+        build:
+            context: .
+            dockerfile: tracing_app/Dockerfile
+        environment:
+            MONGO_CLIENT: "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+            SECRET_KEY: "thisisasecretkey"
+            MAIL_SERVER: "smtp.gmail.com"
+            MAIL_PORT: 465
+            MAIL_USERNAME: "soft7011cwk2jb@gmail.com"
+            MAIL_PASSWORD: "C0urs3w0rk__"
+            MAIL_USE_TLS: "False"
+            MAIL_USE_SSL: "True"
+        image: tracing_app
+        networks:
+            - holderapp
+        ports:
+            - 5001:5001
+
+    user_account_app:
+        build:
+            context: .
+            dockerfile: user_account_app/Dockerfile
+        environment:
+            MONGO_CLIENT: "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+            SECRET_KEY: "thisisasecretkey"
+        image: user_account_app
+        networks:
+            - holderapp 
+        ports:
+            - 5000:5000

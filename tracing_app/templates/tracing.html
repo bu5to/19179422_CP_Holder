@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracing</title>
+</head>
+<body>
+<form action="{{ url_for('tracing', crownpassid = crownpassid) }}" method="POST">
+    <label for="start">Starting date:</label>
+
+    <input type="date" id="start" name="start"
+           value="2021-01-01"
+           min="2021-01-01" max="2023-12-31">
+
+    <label for="start">Ending date:</label>
+
+    <input type="date" id="end" name="end"
+           value="2023-12-31"
+           min="2021-01-01" max="2023-12-31">
+    <input type="submit" value="Search">
+</form>
+<ul>
+    <li>
+        <td>
+            ID
+        </td>
+        <td>
+            Date
+        </td>
+        <td>
+            Area
+        </td>
+        <td>
+            Check
+        </td>
+    </li>
+    {% for element in tracing %}
+
+    <li>
+        <td>
+            {{ element.id }}
+        </td>
+        <td>
+            {{ element.date }}
+        </td>
+        <td>
+            {{ element.area }}
+        </td>
+        <td>
+            {{ element.check }}
+        </td>
+    </li>
+
+    {% endfor %}
+</ul>
+</body>
+</html>

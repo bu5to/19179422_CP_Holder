@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cp-holder
+spec:
+  selector:
+    app: cp-holder
+  ports:
+  - protocol: "TCP"
+    port: 6000
+    targetPort: 5000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cp-holder
+spec:
+  selector:
+    matchLabels:
+      app: cp-holder
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: cp-holder
+    spec:
+      containers:
+      - name: user-account-app
+        image: gcr.io/soft7011-jorge/user_account_app:version1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+      - name: tracing-app
+        image: gcr.io/soft7011-jorge/tracing_app:version1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5001
+      - name: pass-app
+        image: gcr.io/soft7011-jorge/pass_app:version1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5002
+      - name: booker-app
+        image: gcr.io/soft7011-jorge/booker_app:version1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5003

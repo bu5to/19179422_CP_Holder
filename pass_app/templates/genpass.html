@@ -1,0 +1,56 @@
+<div style="text-align: center">
+    <img src="http://localhost:5002/qr/{{user.crownpassid}}" alt="" style="height: 370px; width: 370px;">
+    <div>
+        <div>
+            <div>
+                <div>
+                  <span style="padding-right:3px; padding-top: 3px; display:inline-block;">
+                  <img src="http://localhost:5002/photo/{{user.crownpassid}}"
+                       style="max-width: 200px; max-height: 200px;">
+              </span>
+                    <h5 class="u-text u-text-palette-1-base u-text-3" style="text-align: center;font-size: 16px">{{user.name}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table style="text-align: center;">
+            <colgroup>
+                <col width="24.7%">
+                <col width="75.3%">
+            </colgroup>
+            <tbody class="u-table-body">
+            <tr style="height: 75px;">
+                <td><b>Infection status</b> </td>
+                {% if crownpass.infStatus == "No infection" %}
+                <td bgcolor="#00C409" >
+                    {{crownpass.infStatus}}
+                </td>
+                {% elif user.infStatus == "Suspected of infection" %}
+                <td bgcolor="#FFBF00">
+                    {{crownpass.infStatus}}
+                </td>
+                {% else %}
+                <td bgcolor="#FF0000" style="color:white;">
+                    {{crownpass.infStatus}}
+                </td>
+                {% endif %}
+            </tr>
+            <tr style="height: 75px;">
+                <td><b>Vaccination status</b></td>
+                {% if crownpass.vacStatus == "Two or more doses" %}
+                <td bgcolor="#002DB0" style="color:white;">
+                    {{crownpass.vacStatus}}
+                </td>
+                {% elif crownpass.vacStatus == "One dose" %}
+                <td bgcolor="#88DEFF">
+                    {{crownpass.vacStatus}}
+                </td>
+                {% else %}
+                <td>{{crownpass.vacStatus}}</td>
+                {% endif %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

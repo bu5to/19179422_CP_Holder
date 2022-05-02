@@ -1,0 +1,128 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 750px;
+}
+
+.u-section-1 .u-text-1 {
+  width: 762px;
+  margin: 60px auto 0;
+}
+
+.u-section-1 .u-text-2 {
+  width: 647px;
+  margin: 30px auto 0;
+}
+
+.u-section-1 .u-image-1 {
+  width: 370px;
+  height: 370px;
+  margin: 20px auto 0;
+}
+
+.u-section-1 .u-list-1 {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.u-section-1 .u-repeater-1 {
+  grid-template-columns: 100%;
+  grid-gap: 30px 30px;
+  min-height: 143px;
+}
+
+.u-section-1 .u-list-item-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 28px 30px;
+}
+
+.u-section-1 .u-icon-1 {
+  height: 88px;
+  width: 88px;
+  color: rgb(255, 255, 255) !important;
+  background-image: none;
+  margin: 0 auto 0 0;
+  padding: 9px;
+}
+
+.u-section-1 .u-text-3 {
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: -56px 0 0;
+}
+
+.u-section-1 .u-table-1 {
+  margin-top: 6px;
+  margin-bottom: 60px;
+}
+
+.u-block-8d3d-77 {
+  font-weight: 700;
+}
+
+.u-block-8d3d-78 {
+  height: 22px;
+}
+
+.u-section-1 .u-table-cell-2 {
+  background-image: none;
+}
+
+.u-section-1 .u-table-cell-4 {
+  background-image: none;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: calc(33.3333% - 20px) calc(33.3333% - 20px) calc(33.3333% - 20px);
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-text-1 {
+    width: 720px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: calc(50% - 15px) calc(50% - 15px);
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-text-1 {
+    width: 540px;
+  }
+
+  .u-section-1 .u-text-2 {
+    width: 540px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 720px;
+  }
+
+  .u-section-1 .u-text-1 {
+    width: 340px;
+  }
+
+  .u-section-1 .u-text-2 {
+    width: 340px;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 340px;
+    height: 340px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

@@ -1,0 +1,5 @@
+pymongo==4.1.0
+pillow==9.1.0
+Flask==2.0.2
+Werkzeug==2.0.3
+dnspython==2.2.1

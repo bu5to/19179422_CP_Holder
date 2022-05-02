@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pass.css') }}" media="screen">
+{% endblock %}
+{% block content %}
+    <section class="u-align-center u-clearfix u-section-1" id="sec-7305">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <!--<h2 class="u-text u-text-palette-1-base u-text-1" style="text-align: center;">Crownpass</h2>
+        <p class="u-text u-text-grey-50 u-text-2" style="text-align: center;">Pass details of&nbsp;</p> -->
+        <img class="u-image u-image-default u-preserve-proportions" src="/qr/{{user.crownpassid}}" alt="" style="height: 370px; width: 370px;">
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-1">
+              <div class="u-container-layout u-similar-container u-container-layout-1" style="text-align: left;">
+                  <span style="padding-right:3px; padding-top: 3px; display:inline-block;">
+                  <img src="/photo/{{user.crownpassid}}" style="max-width: 200px; max-height: 200px;">
+              </span>
+                <h5 class="u-text u-text-palette-1-base u-text-3" style="text-align: center;">{{user.name}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+          <table class="u-table-entity">
+            <colgroup>
+              <col width="24.7%">
+              <col width="75.3%">
+            </colgroup>
+            <tbody class="u-table-body">
+              <tr style="height: 75px;">
+                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">Infection status</td>
+                {% if crownpass.infStatus == "No infection" %}
+                <td class="u-border-2 u-border-grey-40 u-custom-color-1 u-table-cell u-table-cell-2">{{crownpass.infStatus}}</td>
+                {% elif user.infStatus == "Suspected of infection" %}
+                <td bgcolor="#FFBF00" class="u-border-2 u-border-grey-40 u-table-cell u-table-cell-2">{{crownpass.infStatus}}</td>
+                {% else %}
+                <td bgcolor="#FF0000" class="u-border-2 u-border-grey-40 u-table-cell u-table-cell-2">{{crownpass.infStatus}}</td>
+                {% endif %}
+              </tr>
+              <tr style="height: 75px;">
+                <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">Vaccination status</td>
+                {% if crownpass.vacStatus == "Two or more doses" %}
+                <td class="u-border-2 u-border-grey-40 u-palette-1-dark-1 u-table-cell u-table-cell-4">{{crownpass.vacStatus}}</td>
+                {% elif crownpass.vacStatus == "One dose" %}
+                <td bgcolor="#79b6ef" class="u-border-2 u-border-grey-40 u-table-cell u-table-cell-4">{{crownpass.vacStatus}}</td>
+                {% else %}
+                <td class="u-border-2 u-border-grey-40 u-table-cell u-table-cell-4">{{crownpass.vacStatus}}</td>
+                {% endif %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+{% endblock %}

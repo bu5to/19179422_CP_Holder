@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/check-trace.css') }}" media="screen">
+{% endblock %}
+{% block content %}
+<section class="u-align-center u-clearfix u-section-1" id="sec-06cc">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-tab-links-align-justify u-tabs u-tabs-1">
+            <ul class="u-tab-list u-unstyled" role="tablist">
+                <li class="u-tab-item" role="presentation">
+                    <a class="active u-active-white u-border-2 u-border-active-palette-1-base u-border-grey-15 u-border-hover-grey-15 u-border-no-bottom u-border-no-left u-border-no-right u-button-style u-grey-10 u-hover-grey-10 u-tab-link u-tab-link-1"
+                       id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">User
+                        tracing</a>
+                </li>
+                <li class="u-tab-item" role="presentation">
+                    <a class="u-active-white u-border-2 u-border-active-palette-1-base u-border-grey-15 u-border-hover-grey-15 u-border-no-bottom u-border-no-left u-border-no-right u-button-style u-grey-10 u-hover-grey-10 u-tab-link u-tab-link-2"
+                       id="link-tab-ecf6" href="#tab-ecf6" role="tab" aria-controls="tab-ecf6" aria-selected="false">Testing</a>
+                </li>
+                <li class="u-tab-item" role="presentation">
+                    <a class="u-active-white u-border-2 u-border-active-palette-1-base u-border-grey-15 u-border-hover-grey-15 u-border-no-bottom u-border-no-left u-border-no-right u-button-style u-grey-10 u-hover-grey-10 u-tab-link u-tab-link-3"
+                       id="link-tab-f3e8" href="#tab-f3e8" role="tab" aria-controls="tab-f3e8" aria-selected="false">Vaccination</a>
+                </li>
+            </ul>
+            <div class="u-tab-content">
+                <div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5"
+                     role="tabpanel" aria-labelledby="link-tab-0da5">
+                    <div class="u-container-layout u-valign-top u-container-layout-1">
+                        <p class="u-text u-text-default u-text-1">Tracing of the user through controlled areas.</p>
+                        <div class="u-expanded-width u-form u-form-1">
+                            <p>Just a wireframe. Click <a href="{{ url_for('tracing', crownpassid = crownpassid) }}">here</a>
+                                to show actual results.</p>
+                            <form action="{{ url_for('showtrace', crownpassid = crownpassid) }}" method="POST"
+                                  class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom"
+                                  name="form-1" style="padding: 10px;">
+                                <div class="u-form-date u-form-group u-form-partition-factor-2">
+                                    <label for="name-f930" class="u-label">From</label>
+                                    <input type="date" placeholder="From" id="name-f930" name="start"
+                                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
+                                           required="required">
+                                </div>
+                                <div class="u-form-date u-form-group u-form-partition-factor-2">
+                                    <label for="email-f930" class="u-label">To</label>
+                                    <input type="date" placeholder="To" id="email-f930" name="end"
+                                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
+                                           required="required">
+                                </div>
+                                <div class="u-align-center u-form-group u-form-submit">
+                                    <input type="submit" value="Search">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                            <table class="u-table-entity">
+                                <colgroup>
+                                    <col width="50%">
+                                    <col width="50%">
+                                </colgroup>
+                                <tbody class="u-table-body">
+                                <tr style="height: 61px;">
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-13">
+                                        user
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        DATE
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        VENUE
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        CHECK
+                                    </td>
+                                </tr>
+                                {% for trace in tracing %}
+                                <tr style="height: 62px;">
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-13">
+                                        {{ trace.user }}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{ trace.date }}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{ trace.area }}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{ trace.check }}
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-ecf6" role="tabpanel"
+                     aria-labelledby="link-tab-ecf6">
+                    <div class="u-container-layout u-valign-top u-container-layout-2">
+                        <p class="u-text u-text-default u-text-2">Tests booked by the user through the Crownpass
+                            application.</p>
+                        <div class="u-expanded-width u-table u-table-responsive u-table-2">
+                            <table class="u-table-entity">
+                                <colgroup>
+                                    <col width="25.1%">
+                                    <col width="25.1%">
+                                    <col width="24.8%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tbody class="u-table-body">
+                                <tr style="height: 61px;">
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-5">
+                                        USER
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        DATE OF TESTING
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        TESTING CENTRE
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        TYPE OF TESTING
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        RESULT
+                                    </td>
+                                </tr>
+                                {% for test in covidTests %}
+                                <tr style="height: 62px;">
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-9">
+                                        {{test.user}}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{test.date}}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{test.testCentre}}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{test.testType}}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{test.result}}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-container-style u-tab-pane u-white u-tab-pane-3" id="tab-f3e8" role="tabpanel"
+                     aria-labelledby="link-tab-f3e8">
+                    <div class="u-container-layout u-valign-top u-container-layout-3">
+                        <p class="u-text u-text-default u-text-3">Vaccinations booked by the user through the Crownpass
+                            app.</p>
+                        <div class="u-expanded-width u-table u-table-responsive u-table-3">
+                            <table class="u-table-entity">
+                                <colgroup>
+                                    <col width="25.1%">
+                                    <col width="25.1%">
+                                    <col width="24.8%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tbody class="u-table-body">
+                                <tr style="height: 61px;">
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-13">
+                                        user
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        DATE OF VACCINATION
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        VACCINATION CENTRE
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        TYPE OF VACCINE
+                                    </td>
+                                </tr>
+                                {% for vaccine in vaccines %}
+                                <tr style="height: 62px;">
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-17">
+                                        {{ vaccine.user }}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{ vaccine.date }}
+                                    </td>
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{ vaccine.vacCentre }}
+                                    </td>
+
+                                    <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                                        {{ vaccine.vacType }}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

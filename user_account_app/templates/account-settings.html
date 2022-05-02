@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/account-settings.css') }}" media="screen">
+{% endblock %}
+{% block content %}
+    <section class="u-clearfix u-palette-1-base u-section-1" id="sec-20ee">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-size-60">
+                <div class="u-layout-col">
+                  <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-60 u-layout-cell-1">
+                    <div class="u-container-layout u-container-layout-1">
+                      <h2 class="u-text u-text-default u-text-1">Account details</h2>
+                      <div class="u-align-left u-form u-form-1">
+                        <form action="{{url_for('settings')}}" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                          <div class="u-form-group u-form-group-1">
+                            <label for="text-240b" class="u-label">Crownpass ID</label>
+                            <input type="text" id="text-240b" name="crownpassid" value="{{user.crownpassid}}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle" placeholder="Name" readonly>
+                          </div>
+                          <div class="u-form-group u-form-group-1">
+                            <label for="text-240b" class="u-label">Name</label>
+                            <input type="text" id="text-240b" name="name" value="{{user.name}}" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle" placeholder="Name" readonly>
+                          </div>
+                          <div class="u-form-group u-form-group-2">
+                            <label for="text-a652" class="u-label">Phone number</label>
+                            <input type="text" placeholder="Phone number" value="{{user.phone}}" id="text-a652" name="phone" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle">
+                          </div>
+                          <div class="u-form-email u-form-group u-form-group-3">
+                            <label for="text-65d7" class="u-label">E-Mail</label>
+                            <input type="email" placeholder="E-Mail" id="text-65d7" value="{{user.email}}" name="email" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle">
+                          </div>
+                          <div class="u-form-group u-form-group-4">
+                            <label for="text-b040" class="u-label">Home address</label>
+                            <input type="text" placeholder="Home address" id="text-b040" value="{{user.home}}" name="home" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle">
+                          </div>
+                          <div class="u-form-date u-form-group u-form-group-5">
+                            <label for="date-773e" class="u-label">Birth date</label>
+                            <input type="text" value="{{user.birthdate}}" placeholder="MM/DD/YYYY" id="date-773e" name="date" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle" required="" readonly>
+                          </div>
+                          <div class="u-form-group u-form-select u-form-group-6">
+                            <label for="select-7f86" class="u-label">Gender</label>
+                            <div class="u-form-select-wrapper">
+                              <select id="select-7f86" name="gender" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                              </select>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                            </div>
+                          </div>
+                          <!--
+                          <div class="u-form-group u-form-select u-form-group-7">
+                            <label for="select-7449" class="u-label">Infection status</label>
+                            <div class="u-form-select-wrapper">
+                              <select id="select-7449" name="infStatus" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle">
+                                <option value="No infection" style="color: #3b4c5b">No infection</option>
+                                <option value="Suspected of infection" style="color: #3b4c5b">Suspected of infection</option>
+                                <option value="Confirmed infection" style="color: #3b4c5b">Confirmed infection</option>
+                              </select>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                            </div>
+                          </div>
+                          <div class="u-form-group u-form-select u-form-group-8">
+                            <label for="select-3994" class="u-label">Vaccination status</label>
+                            <div class="u-form-select-wrapper">
+                              <select id="select-3994" name="vacStatus" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle">
+                                <option value="No vaccination" style="color: #3b4c5b">No vaccination</option>
+                                <option value="One dose" style="color: #3b4c5b">One dose</option>
+                                <option value="Two or more doses" style="color: #3b4c5b">Two or more doses</option>
+                              </select>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                            </div>
+                          </div> -->
+                          <div class="u-align-center u-form-group u-form-submit u-form-group-9">
+                            <a href="#" class="u-active-white u-border-2 u-border-white u-btn u-btn-submit u-button-style u-hover-white u-none u-text-active-palette-1-base u-text-body-alt-color u-text-hover-palette-1-base u-btn-1">save</a>
+                            <input type="submit" value="submit" class="u-form-control-hidden" wfd-invisible="true">
+                          </div>
+                         <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true">
+                        </form>
+                      </div>
+                      <a href="{{url_for('wipetracing')}}" class="u-border-2 u-border-white u-btn u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">Reset&nbsp; movement tracing</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
