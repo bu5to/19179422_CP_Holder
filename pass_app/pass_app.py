@@ -1,3 +1,4 @@
+import sys
 from flask import Flask, render_template, url_for, send_file, session, Response, request, redirect
 try:
     from pass_app.models import User, Crownpass
