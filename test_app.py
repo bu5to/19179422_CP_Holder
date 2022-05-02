@@ -64,7 +64,7 @@ def test_crownpassReg(clientUser):
     assert ((end - start) < 20 and response.status_code == 200)
 
 
-def test_checkInCheckOut(clientTrace):
+def test_checkInCheckOut(clientPass):
     '''
     QR-PF-02: Check-in.
     The response time for check-in a Crownpass holder into a controlled area should be no more than 3 seconds.
@@ -72,9 +72,29 @@ def test_checkInCheckOut(clientTrace):
     The response time for check-out a Crownpass holder out of a controlled area should be no more than 10 seconds.
     '''
     start = time.time()
-    response = clientTrace.get("/showtrace/1", follow_redirects=True)
+    strDateCheckIn = "2022/05/30, 20:00:00"
+    response_in = clientPass.post("/authorize/1", data={
+        "area": "Sample Controlled Area",
+        "date": strDateCheckIn,
+        "check": "In"
+    }, follow_redirects=True)
     end = time.time()
-    assert ((end - start) < 13 and response.status_code == 200)
+    timeIn = end - start
+    strDateCheckOut = "2022/05/30, 21:00:00"
+    start = time.time()
+    response_out = clientPass.post("/authorize/1", data={
+        "area": "Sample Controlled Area",
+        "date": strDateCheckOut,
+        "check": "Out"
+    }, follow_redirects=True)
+    end = time.time()
+    timeOut = end - start
+    myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
+    mydb = myclient["tracing"]
+    mycol = mydb["tracing"]
+    query = {"area": "Sample Controlled Area"}
+    mycol.delete_many(query)
+    assert (timeIn <= 3 and timeOut <= 10 and response_in.status_code == 200 and response_out.status_code == 200)
 
 
 def test_changePassRed(clientTrace):

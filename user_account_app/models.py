@@ -15,8 +15,7 @@ class User:
         self.birthdate = birthdate
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            os.environ.get('MONGO_CLIENT'))
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["users"]
         mycol = mydb["users"]
         x = mycol.find_one({"crownpassid": int(crownpassid)})
@@ -54,8 +53,7 @@ class Trace:
         return x
 
     def wipeTracing(crownpassid):
-        myclient = pymongo.MongoClient(
-            os.environ.get('MONGO_CLIENT'))
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["tracing"]
         mycol = mydb["tracing"]
         query = {"crownpassid": int(crownpassid)}
@@ -69,8 +67,7 @@ class Crownpass:
         self.vacStatus = vacStatus
 
     def get_by_id(crownpassid):
-        myclient = pymongo.MongoClient(
-            os.environ.get('MONGO_CLIENT'))
+        myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
         mydb = myclient["crownpass"]
         mycol = mydb["crownpass"]
         x = mycol.find_one({"crownpassid": int(crownpassid)})
