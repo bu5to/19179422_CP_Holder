@@ -58,7 +58,7 @@ def register():
         user = User(crownpassid, photo, qr, phone, email, home, name, gender, birthdate)
         crownpass = Crownpass(crownpassid, infStatus, vacStatus)
         userDict = User.parseToDict(user)
-        x = mycol.insert_one(userDict)
+        mycol.insert_one(userDict)
         mydb = myclient["crownpass"]
         mycol = mydb["crownpass"]
         passDict = Crownpass.parseToDict(crownpass)

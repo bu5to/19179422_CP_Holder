@@ -59,4 +59,3 @@ class Crownpass:
             "vacStatus": self.vacStatus
         }
         return strDict
-

@@ -1,6 +1,7 @@
 import pymongo
 import os
 
+
 class User:
     def __init__(self, crownpassid, photo, qr, phone, email, home, name, gender, birthdate):
         self.crownpassid = crownpassid
