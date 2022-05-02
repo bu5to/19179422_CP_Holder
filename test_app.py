@@ -1,3 +1,4 @@
+import sys
 import os
 import pytest
 from booker_app.booker_app import app as bookerApp
