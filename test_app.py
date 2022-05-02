@@ -57,7 +57,7 @@ def test_crownpassReg(clientUser):
         "photo": open('user_account_app/static/images/testuser.jpg', 'rb')
     },follow_redirects=True)
     end = time.time() #The timestamp is recorded after processing the POST request.
-    myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
+    myclient = pymongo.MongoClient("mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     mydb = myclient["users"]
     mycol = mydb["users"]
     myquery = {"name": "Sample testing user"}
@@ -195,7 +195,7 @@ def test_bookCovidTest(clientBooker):
         "minutes": "30",
         "testtype": "PCR"
     }, follow_redirects=True)
-    myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
+    myclient = pymongo.MongoClient("mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     mydb = myclient["tests"]
     mycol = mydb["tests"]
     myquery = {"user": crownpassid}
@@ -222,7 +222,7 @@ def test_bookVaccination(clientBooker):
         "date": "20/06/2022",
         "vacType": "Astrazeneca"
     }, follow_redirects=True)
-    myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
+    myclient = pymongo.MongoClient("mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     mydb = myclient["vaccination"]
     mycol = mydb["vaccination"]
     myquery = {"user": crownpassid}
