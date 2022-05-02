@@ -75,7 +75,7 @@ def test_checkInCheckOut(clientTrace):
     start = time.time()
     response = clientTrace.get("/showtrace/1",follow_redirects=True)
     end = time.time()
-    assert ((end - start) < 3 and response.status_code == 200)
+    assert ((end - start) < 13 and response.status_code == 200)
 
 
 def test_changePassRed(clientTrace):
