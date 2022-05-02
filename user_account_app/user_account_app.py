@@ -1,4 +1,3 @@
-import sys
 from flask import Flask, request, render_template, url_for, redirect, session, flash
 try:
     from user_account_app.models import User, Trace, Crownpass
@@ -63,7 +62,7 @@ def register():
         mydb = myclient["crownpass"]
         mycol = mydb["crownpass"]
         passDict = Crownpass.parseToDict(crownpass)
-        x = mycol.insert_one(passDict)
+        mycol.insert_one(passDict)
 
         return redirect(url_for('index'))
     return render_template('register.html')

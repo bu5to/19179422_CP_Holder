@@ -1,4 +1,3 @@
-import sys
 import os
 import pytest
 from booker_app.booker_app import app as bookerApp
@@ -55,13 +54,13 @@ def test_crownpassReg(clientUser):
         "birthdate": "1999/01/01",
         "gender": "Male",
         "photo": open('user_account_app/static/images/testuser.jpg', 'rb')
-    },follow_redirects=True)
-    end = time.time() #The timestamp is recorded after processing the POST request.
+    }, follow_redirects=True)
+    end = time.time()  # The timestamp is recorded after processing the POST request.
     myclient = pymongo.MongoClient(os.environ.get('MONGO_CLIENT'))
     mydb = myclient["users"]
     mycol = mydb["users"]
     myquery = {"name": "Sample testing user"}
-    mycol.delete_one(myquery) #The registered user is deleted after having created it.
+    mycol.delete_one(myquery)  # The registered user is deleted after having created it.
     assert ((end - start) < 20 and response.status_code == 200)
 
 
@@ -73,7 +72,7 @@ def test_checkInCheckOut(clientTrace):
     The response time for check-out a Crownpass holder out of a controlled area should be no more than 10 seconds.
     '''
     start = time.time()
-    response = clientTrace.get("/showtrace/1",follow_redirects=True)
+    response = clientTrace.get("/showtrace/1", follow_redirects=True)
     end = time.time()
     assert ((end - start) < 13 and response.status_code == 200)
 
@@ -90,7 +89,7 @@ def test_changePassRed(clientTrace):
     '''
     start = time.time()
     CovidTest.setColor("red", 1)
-    response = clientTrace.get("/notifyPositiveTest/1",follow_redirects=True)
+    response = clientTrace.get("/notifyPositiveTest/1", follow_redirects=True)
     end = time.time()
     assert ((end - start) < 11 and response.status_code == 200)
 
@@ -128,7 +127,8 @@ def test_privacy(clientPass, clientUser):
     '''
     response = clientPass.get("/crownpass/1")
     print(response)
-    assert (response.status_code == 500) #An error is thrown if a user tries to check a pass without having logged in or if the pass does not belong to him.
+    assert (response.status_code == 500)
+    #An error is thrown if a user tries to check a pass without having logged in or if the pass does not belong to him.
 
 
 def raisingError(response):
@@ -150,9 +150,11 @@ def test_modifyData(clientUser):
     for modification by the user of the Crownpass holder.
     Name and address, contact details, and user tracing.
     '''
-    response = clientUser.get("/wipetracing") #By the structure of the wipetracing() method, it is impossible to reset the movement trace of another user.
+    response = clientUser.get("/wipetracing")
+    # By the structure of the wipetracing() method, it is impossible to reset the movement trace of another user.
     with pytest.raises(KeyError):
-        assert raisingError(response) #However, it is made sure that the movement trace cannot be reset from a non logged-in user.
+        assert raisingError(response)
+        # However, it is made sure that the movement trace cannot be reset from a non logged-in user.
 
 
 def test_loginOK(clientUser):
@@ -162,7 +164,7 @@ def test_loginOK(clientUser):
     '''
     response = clientUser.post("/login", data={
         "crownpassid": "1"
-    },follow_redirects=True)
+    }, follow_redirects=True)
     assert (response.status_code == 200)
 
 
@@ -173,7 +175,7 @@ def test_loginError(clientUser):
     '''
     response = clientUser.post("/login", data={
         "crownpassid": "2398983489342938"
-    },follow_redirects=True)
+    }, follow_redirects=True)
     assert (response.status_code == 500)
 
 

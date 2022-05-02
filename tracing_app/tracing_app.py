@@ -73,7 +73,10 @@ def notifyPositiveTest(crownpassid):
     mail = Mail(app)
     msg = Message(sender=("Jorge from Crownpass", 'soft7011cwk2jb@gmail.com'), recipients=[user.email],
                   subject="COVID-19 Test: Report")
-    msg.html = "Dear " + user.name + ",<br> hereby we confirm that your COVID-19 test has been returned as <b>positive.</b> Do not forget to stay isolated and comply with the required regulations. The Crownpass team wishes you a safe recovery.<br> Yours sincerely, <br> the <b>Crownpass</b> team."
+    msg.html = "Dear " + user.name + ",<br> hereby we confirm that your COVID-19 test has been returned as " \
+                                     "<b>positive.</b> Do not forget to stay isolated and comply with the " \
+                                     "required regulations. The Crownpass team wishes you a safe recovery." \
+                                     "<br> Yours sincerely, <br> the <b>Crownpass</b> team."
     mail.send(msg)
     return "Message sent."
 

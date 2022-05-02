@@ -112,7 +112,6 @@ class Vaccine:
         self.vacCentre = vacCentre
         self.vacType = vacType
 
-
     def get_by_id(crownpassid):
         myclient = pymongo.MongoClient(
             "mongodb+srv://19179422:soft7011@cluster0.whl83.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
