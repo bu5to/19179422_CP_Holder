@@ -31,7 +31,7 @@
                 <td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">Infection status</td>
                 {% if crownpass.infStatus == "No infection" %}
                 <td class="u-border-2 u-border-grey-40 u-custom-color-1 u-table-cell u-table-cell-2">{{crownpass.infStatus}}</td>
-                {% elif user.infStatus == "Suspected of infection" %}
+                {% elif crownpass.infStatus == "Suspected of infection" %}
                 <td bgcolor="#FFBF00" class="u-border-2 u-border-grey-40 u-table-cell u-table-cell-2">{{crownpass.infStatus}}</td>
                 {% else %}
                 <td bgcolor="#FF0000" class="u-border-2 u-border-grey-40 u-table-cell u-table-cell-2">{{crownpass.infStatus}}</td>
